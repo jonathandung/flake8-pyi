@@ -35,6 +35,9 @@ class Bad(object):  # Y040 Do not inherit from "object" explicitly, as it is red
 
 class AlsoBad(int, builtins.object): ...  # Y040 Do not inherit from "object" explicitly, as it is redundant in Python 3
 
+class Acceptable(typing.Protocol):
+    def __iadd__(self, other: Self, /) -> object: ...
+
 class Good:
     def __new__(cls: type[Self], *args: Any, **kwargs: Any) -> Self: ...
     @abstractmethod
